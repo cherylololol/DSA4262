@@ -7902,7 +7902,8 @@ The following subsections detail text normalization, metadata removal, and featu
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/dreaddit-train.csv"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"data"</span><span class="p">,</span> <span class="s2">"dreaddit-train.csv"</span><span class="p">)</span>
+<span class="n">train_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">train_path</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">train_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">train_raw</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -8103,7 +8104,8 @@ The following subsections detail text normalization, metadata removal, and featu
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_raw</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/dreaddit-test.csv"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"data"</span><span class="p">,</span> <span class="s2">"dreaddit-test.csv"</span><span class="p">)</span>
+<span class="n">test_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">test_path</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">test_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">test_raw</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -9704,7 +9706,7 @@ Best CV F1: 0.7845016987647835
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Grid search identified C = 2 as the optimal regularization strength, achieving a 5-fold cross validated F1 score of 0.785.</p>
+<p>Grid search identified C = 2 as the optimal regularization strength, achieving a 5-fold cross validated F1 score of ~0.785.</p>
 <p>Performance differences across C values were modest, suggesting that the model is relatively stable with respect to regularization strength. This indicates that predictive performance is driven primarily by feature representation rather than fine tuning of hyperparameters.</p>
 </div>
 </div>
@@ -10041,7 +10043,7 @@ weighted avg       0.76      0.76      0.76       715
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/var/folders/51/18lb_2zd2rsdqjf9975flk3w0000gn/T/ipykernel_39575/1516511065.py:3: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
+<pre>/var/folders/51/18lb_2zd2rsdqjf9975flk3w0000gn/T/ipykernel_44149/1516511065.py:3: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
   shap.summary_plot(
 </pre>
 </div>
