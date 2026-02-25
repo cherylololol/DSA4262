@@ -7828,7 +7828,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.-Data-Cleaning-and-Preprocessing">2. Data Cleaning and Preprocessing<a class="anchor-link" href="#2.-Data-Cleaning-and-Preprocessing">¶</a></h2><p>Prior to modelling, we apply structured preprocessing to ensure data integrity, reproducibility, and deployment realism.
+<h2 id="2.-Data-Cleaning-and-Preprocessing">2. Data Cleaning and Preprocessing<a class="anchor-link" href="#2.-Data-Cleaning-and-Preprocessing">¶</a></h2><p>Prior to modelling, data undergoes structured preprocessing to ensure data integrity, reproducibility, and deployment realism.
 The following subsections detail text normalization, metadata removal, and feature organization decisions.</p>
 </div>
 </div>
@@ -8383,7 +8383,7 @@ Test duplicates: 0
 <li>Removing URLs</li>
 <li>Trimming whitespace</li>
 </ul>
-<p>We deliberately avoid aggressive normalization (e.g., stopword removal or lemmatization), as stress detection is sensitive to function words and self referential cues that may be removed by heavy preprocessing.</p>
+<p>We deliberately avoid aggressive normalization (e.g., stopword removal or lemmatization), as stress detection is sensitive to function words and self referential cues such as personal pronouns like "I' or "me" that may be removed by heavy preprocessing.</p>
 </div>
 </div>
 </div>
@@ -8420,7 +8420,7 @@ Test duplicates: 0
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.5-Removing-Non-Generalizable-Columns">2.5 Removing Non Generalizable Columns<a class="anchor-link" href="#2.5-Removing-Non-Generalizable-Columns">¶</a></h3><p>Here, we remove identifier and annotation metadata columns (e.g., post_id, id, confidence, sentence_range). This prevents information leakage and ensures the model relies only on features available in real world deployment setting.</p>
+<h3 id="2.5-Removing-Non-Generalizable-Columns">2.5 Removing Non Generalizable Columns<a class="anchor-link" href="#2.5-Removing-Non-Generalizable-Columns">¶</a></h3><p>Here, identifier and annotation metadata columns (e.g., post_id, id, confidence, sentence_range) are removed. This prevents information leakage and ensures the model relies only on features available in real world deployment setting.</p>
 </div>
 </div>
 </div>
@@ -8616,7 +8616,7 @@ Social features: 4
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">stress_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">train_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"subreddit"</span><span class="p">)[</span><span class="s2">"label"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
@@ -8636,7 +8636,7 @@ Social features: 4
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Stress Prevalence by Subreddit"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Proportion of Posts Labeled as Stress"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Subreddit"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># Percentage scale</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
@@ -10043,7 +10043,7 @@ weighted avg       0.76      0.76      0.76       715
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/var/folders/51/18lb_2zd2rsdqjf9975flk3w0000gn/T/ipykernel_44149/1516511065.py:3: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
+<pre>/var/folders/51/18lb_2zd2rsdqjf9975flk3w0000gn/T/ipykernel_50843/1516511065.py:3: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
   shap.summary_plot(
 </pre>
 </div>
@@ -10073,7 +10073,7 @@ weighted avg       0.76      0.76      0.76       715
 <p>These patterns are consistent with Section 3.5 (correlation heatmap) and Section 4 (feature selection). The SHAP results therefore validate that the final model operationalises the same psychological signals identified during exploratory analysis.</p>
 <p>Conversely, higher tone and greater linguistic confidence shift predictions toward non-stress, suggesting that emotionally positive and assertive language reduces the likelihood of stress classification.</p>
 <p>Although engineered linguistic markers dominate the top positions, several TF-IDF tokens also appear among the most influential features. Many of these words occur within common constructions such as “I can’t even…” or “I don’t know what to do,” which convey overwhelm or perceived lack of control. These phrases act as contextual signals of distress and not as standalone keywords. Their presence reflects how the model captures specific linguistic patterns associated with stress expression.</p>
-<p>Importantly, engineered linguistic features display broader and more consistent impact across samples than individual TF-IDF tokens. While tokens may spike importance for certain posts, psychological markers such as tone, clout, and negative affect contribute systematically across the dataset. This suggests that stress prediction is driven primarily by patterns of emotional expression and self-focus, rather than reliance on a small set of trigger words.</p>
+<p>While tokens may spike importance for certain posts, psychological markers such as tone, clout, and negative affect contribute systematically across the dataset. This suggests that stress prediction is driven primarily by patterns of emotional expression and self-focus, rather than reliance on a small set of trigger words.</p>
 <p>As the model is linear, coefficients provide global interpretability, while SHAP provides instance level explanations. The model is therefore transparent at both aggregate and individual levels.</p>
 </div>
 </div>
@@ -10531,25 +10531,13 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=63dc7662">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="6.5-Probability-Calibration-Considerations">6.5 Probability Calibration Considerations<a class="anchor-link" href="#6.5-Probability-Calibration-Considerations">¶</a></h3><p>While logistic regression produces probabilistic outputs, this study did not explicitly evaluate probability calibration. Calibration assesses whether predicted probabilities correspond to observed outcome frequencies, for example, whether posts predicted at 0.80 stress probability are stressed approximately 80% of the time.</p>
-<p>Because threshold selection relies on probability magnitudes, miscalibration could affect operational decisions in real world deployment. Future work may therefore incorporate calibration curves or reliability diagrams to verify probability accuracy, particularly if the model is used for triage or risk scoring.</p>
-</div>
-</div>
-</div>
-</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9eb144e7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="6.6-Error-Analysis">6.6 Error Analysis<a class="anchor-link" href="#6.6-Error-Analysis">¶</a></h3><p>To truly understand model limitations, we analyse both false negatives (missed stress) and false positives (incorrect stress flags), as well as subreddit differences, since they imply different deployment risks.</p>
+<h3 id="6.5-Error-Analysis">6.5 Error Analysis<a class="anchor-link" href="#6.5-Error-Analysis">¶</a></h3><p>To truly understand model limitations, we analyse both false negatives and false positives, as well as subreddit differences, since they imply different deployment risks.</p>
 </div>
 </div>
 </div>
@@ -10560,7 +10548,7 @@ dtype: float64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="6.6.1-False-Negatives-&amp;-False-Positives">6.6.1 False Negatives &amp; False Positives<a class="anchor-link" href="#6.6.1-False-Negatives-&amp;-False-Positives">¶</a></h4>
+<h4 id="6.5.1-False-Negatives-&amp;-False-Positives">6.5.1 False Negatives &amp; False Positives<a class="anchor-link" href="#6.5.1-False-Negatives-&amp;-False-Positives">¶</a></h4>
 </div>
 </div>
 </div>
@@ -10627,7 +10615,7 @@ dtype: float64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="6.6.2-Most-Confident-Wrong-Predictions">6.6.2 Most Confident Wrong Predictions<a class="anchor-link" href="#6.6.2-Most-Confident-Wrong-Predictions">¶</a></h4><p>A granular examination of high confidence failures can reveal the systemic boundaries of language based stress detection. By analyzing "Most Confident" False Negatives (FN) and False Positives (FP), we can identify where computational signals decouple from psychological reality. These errors are not merely random noise but instead, they highlight two primary linguistic challenges:</p>
+<h4 id="6.5.2-Most-Confident-Wrong-Predictions">6.5.2 Most Confident Wrong Predictions<a class="anchor-link" href="#6.5.2-Most-Confident-Wrong-Predictions">¶</a></h4><p>A granular examination of high confidence failures can reveal the systemic boundaries of language based stress detection. By analyzing "Most Confident" False Negatives (FN) and False Positives (FP), we can identify where computational signals decouple from psychological reality. These errors are not merely random noise but instead, they highlight two primary linguistic challenges:</p>
 <ul>
 <li>Narrative Overpowering: Where a history of positive sentiment masks a current, subtle shift into crisis.</li>
 <li>Affective Intensity Bias: Where high arousal, conflict oriented language is mistaken for active stress, regardless of the user's current state of resolution or reflection.</li>
@@ -10719,7 +10707,7 @@ But it took me months afterward to end it. I remember him screaming at me, calli
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="6.6.3-Error-Rates-by-Subreddit">6.6.3 Error Rates by Subreddit<a class="anchor-link" href="#6.6.3-Error-Rates-by-Subreddit">¶</a></h4><p>Error rates vary across communities, indicating domain dependence: some subreddits contain more ambiguous language where stress and non-stress are less separable. This motivates careful validation before transferring the model to new settings (e.g., Singapore specific platforms).</p>
+<h4 id="6.5.3-Error-Rates-by-Subreddit">6.5.3 Error Rates by Subreddit<a class="anchor-link" href="#6.5.3-Error-Rates-by-Subreddit">¶</a></h4><p>Error rates vary across communities, indicating domain dependence: some subreddits contain more ambiguous language where stress and non-stress are less separable. This motivates careful validation before transferring the model to new settings (e.g., Singapore specific platforms).</p>
 </div>
 </div>
 </div>
@@ -10853,6 +10841,17 @@ But it took me months afterward to end it. I remember him screaming at me, calli
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=806b775b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>From the variation in error rates, it reinforces that stress detection is context dependent. However, smaller subreddits (n&lt;20) should be interpreted cautiously as with the limited observations, error rates may fluctuate due to sampling variance rather than systematic model bias.</p>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=59a20a39">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -10878,7 +10877,7 @@ These errors often contain strong emotion words, conflict language, or dramatic 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="6.7-Clinical-Ethics-and-Deployment-Risks">6.7 Clinical Ethics and Deployment Risks<a class="anchor-link" href="#6.7-Clinical-Ethics-and-Deployment-Risks">¶</a></h3>
+<h3 id="6.6-Clinical-Ethics-and-Deployment-Risks">6.6 Clinical Ethics and Deployment Risks<a class="anchor-link" href="#6.6-Clinical-Ethics-and-Deployment-Risks">¶</a></h3>
 </div>
 </div>
 </div>
@@ -10889,7 +10888,7 @@ These errors often contain strong emotion words, conflict language, or dramatic 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="6.7.1-Nature-of-Model-and-Risks-in-Deployment">6.7.1 Nature of Model and Risks in Deployment<a class="anchor-link" href="#6.7.1-Nature-of-Model-and-Risks-in-Deployment">¶</a></h4><p>This model detects linguistic patterns statistically associated with stress but it does not diagnose mental health conditions.</p>
+<h4 id="6.6.1-Nature-of-Model-and-Risks-in-Deployment">6.6.1 Nature of Model and Risks in Deployment<a class="anchor-link" href="#6.6.1-Nature-of-Model-and-Risks-in-Deployment">¶</a></h4><p>This model detects linguistic patterns statistically associated with stress but it does not diagnose mental health conditions.</p>
 <p>The combined analyses reveal:</p>
 <ul>
 <li><p>Stress prediction is driven primarily by self focus and negative emotion.</p>
@@ -10924,9 +10923,11 @@ These errors often contain strong emotion words, conflict language, or dramatic 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="6.7.2-Ethical-Implications-of-Observed-Errors">6.7.2 Ethical Implications of Observed Errors<a class="anchor-link" href="#6.7.2-Ethical-Implications-of-Observed-Errors">¶</a></h4><p>Confident False Negatives highlight underdetection risk. Subtle or socially embedded distress may not trigger strong negative emotion signals, where individuals express vulnerability within relational contexts. Such errors are clinically significant, as they represent missed opportunities for intervention.</p>
+<h4 id="6.6.2-Ethical-Implications-of-Observed-Errors">6.6.2 Ethical Implications of Observed Errors<a class="anchor-link" href="#6.6.2-Ethical-Implications-of-Observed-Errors">¶</a></h4><p>Confident False Negatives highlight underdetection risk. Subtle or socially embedded distress may not trigger strong negative emotion signals, where individuals express vulnerability within relational contexts. Such errors are clinically significant, as they represent missed opportunities for intervention.</p>
 <p>Confident False Positives reveal that emotional intensity can be misinterpreted as stress, creating risk of overflagging.</p>
-<p>These findings demonstrate that model errors reflect structural biases in linguistic weighting rather than random noise. Responsible deployment therefore requires:</p>
+<p>While logistic regression produces probabilistic outputs, this study did not explicitly evaluate probability calibration. Calibration assesses whether predicted probabilities correspond to observed outcome frequencies, for example, whether posts predicted at 0.80 stress probability are stressed approximately 80% of the time. Since threshold selection relies on probability magnitudes, miscalibration could affect operational decisions in real world deployment.</p>
+<p>These findings demonstrate that model errors reflect structural biases in linguistic weighting rather than random noise.</p>
+<p>Responsible deployment therefore requires:</p>
 <ul>
 <li>Human oversight,</li>
 <li>Context-aware review,</li>
@@ -10945,7 +10946,7 @@ These errors often contain strong emotion words, conflict language, or dramatic 
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="7.-Conclusion">7. Conclusion<a class="anchor-link" href="#7.-Conclusion">¶</a></h2><p>The final model achieves strong predictive performance (F1 ≈ 0.78), identifying a consistent linguistic signature of stress characterised by heightened self focus and negative emotionality. Its stability on test data suggests reliable internal generalisation within the Dreaddit dataset. However, systematic error patterns reveal structural limitations. Indirect or socially embedded distress is more likely to be missed, while emotionally intense but non-clinical posts are sometimes overflagged. Subreddit variation and threshold sensitivity further demonstrate that stress expression is context dependent rather than uniform.</p>
 <p>In the Singapore context, where mental health stigma and cultural norms may encourage restrained or indirect expression of distress, these limitations are particularly salient. Automated detection systems risk underidentifying individuals who communicate distress subtly, while overflagging may create unintended consequences in community or campus environments. Moreover, large scale monitoring raises governance concerns around privacy, consent, and proportionality.</p>
-<p>Instead of being deployed as an autonomous diagnostic system, this model should be positioned as a decision support or triage mechanism within structured institutional settings, such as university wellbeing services, moderated online communities, or early intervention programmes. As noted by Chancellor &amp; De Choudhury (2020), social media based mental health models should be treated as 'screening signals' rather than clinical diagnostics. The nuance of narrative heavy posts, as seen in our False Negative case studies, reinforces the necessity of a Human-in-the-Loop framework, where Artificial Intelligence prioritizes potential cases for review, but the final intervention decision remains with a trained professional.</p>
+<p>Instead of being deployed as an autonomous diagnostic system, this model should be positioned as a decision support or triage mechanism within structured institutional settings, such as university wellbeing services, moderated online communities, or early intervention programmes. As noted by Chancellor &amp; De Choudhury (2020), social media based mental health models should be treated as 'screening signals' rather than clinical diagnostics. The nuance of narrative heavy posts, as seen in our False Negative case studies, reinforces the necessity of a Human-in-the-Loop framework, where AI prioritizes potential cases for review, but the final intervention decision remains with a trained professional.</p>
 <p>Policy deployment would require:</p>
 <ul>
 <li><p>Threshold calibration prioritising recall in high risk contexts,</p>
